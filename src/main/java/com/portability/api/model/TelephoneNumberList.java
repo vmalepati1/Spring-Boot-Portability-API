@@ -9,7 +9,7 @@ public class TelephoneNumberList implements Serializable {
 
     List<TelephoneNumber> telephoneNumbers;
 
-    public TelephoneNumberList(@JsonProperty("tnItem")List<TelephoneNumber> telephoneNumbers) {
+    public TelephoneNumberList(@JsonProperty("tnItem") List<TelephoneNumber> telephoneNumbers) {
         this.telephoneNumbers = telephoneNumbers;
     }
 

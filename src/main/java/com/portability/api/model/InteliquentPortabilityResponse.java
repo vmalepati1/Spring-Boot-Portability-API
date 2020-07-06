@@ -9,6 +9,30 @@ public class InteliquentPortabilityResponse implements Serializable {
     private String statusCode;
     private List<ServiceAvailable> serviceAvailable;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public List<ServiceAvailable> getServiceAvailable() {
+        return serviceAvailable;
+    }
+
+    public void setServiceAvailable(List<ServiceAvailable> serviceAvailable) {
+        this.serviceAvailable = serviceAvailable;
+    }
+
     public static class ServiceAvailable {
         private String telephoneNumber;
         private boolean isPortable;
@@ -64,30 +88,6 @@ public class InteliquentPortabilityResponse implements Serializable {
         public void setNotPortableReason(String notPortableReason) {
             this.notPortableReason = notPortableReason;
         }
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public List<ServiceAvailable> getServiceAvailable() {
-        return serviceAvailable;
-    }
-
-    public void setServiceAvailable(List<ServiceAvailable> serviceAvailable) {
-        this.serviceAvailable = serviceAvailable;
     }
 
 }

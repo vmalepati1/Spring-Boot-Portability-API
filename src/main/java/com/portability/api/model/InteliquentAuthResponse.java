@@ -1,7 +1,5 @@
 package com.portability.api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 
 public class InteliquentAuthResponse implements Serializable {
