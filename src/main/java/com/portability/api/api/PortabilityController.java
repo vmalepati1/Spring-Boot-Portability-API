@@ -28,21 +28,18 @@ public class PortabilityController {
     }
 
     @GetMapping(path = "bandwidth/{tn}")
-    public PortabilityResponse getBandwidthPortability(@PathVariable("tn") String tn) {
-        PortabilityResponse result = new PortabilityResponse(tn, "AT&T", true);
-        return result;
+    public PortabilityResponse getBandwidthPortability(@PathVariable("tn") String tn) throws Exception {
+        return bandwidthService.checkNumber(tn);
     }
 
     @GetMapping(path = "inteliquent/{tn}")
-    public PortabilityResponse getInteliquentPortability(@PathVariable("tn") String tn) {
-        PortabilityResponse result = new PortabilityResponse(tn, "AT&T", true);
-        return result;
+    public PortabilityResponse getInteliquentPortability(@PathVariable("tn") String tn) throws Exception {
+        return inteliquentService.checkNumber(tn);
     }
 
     @GetMapping(path = "peerless/{tn}")
-    public PortabilityResponse getPeerlessPortability(@PathVariable("tn") String tn) {
-        PortabilityResponse result = new PortabilityResponse(tn, "AT&T", true);
-        return result;
+    public PortabilityResponse getPeerlessPortability(@PathVariable("tn") String tn) throws Exception {
+        return peerlessService.checkNumber(tn);
     }
 
 }

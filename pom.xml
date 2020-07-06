@@ -35,6 +35,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.bandwidth.sdk/bandwidth-java-iris-sdk -->
+		<dependency>
+			<groupId>com.bandwidth.sdk</groupId>
+			<artifactId>bandwidth-java-iris-sdk</artifactId>
+			<version>1.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
