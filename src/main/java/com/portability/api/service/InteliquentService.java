@@ -96,6 +96,9 @@ public class InteliquentService implements PortabilityChecker {
                 result.setServiceProviderName(portabilityResponse.getServiceAvailable().get(0).getServiceProviderName());
                 result.setPortable(portabilityResponse.getServiceAvailable().get(0).getIsPortable());
             }
+        } else if (response.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+            // Token expired, re-authenticate for future requests
+            authenticate();
         } else {
             System.out.println("InteliquentService: Failed to check number for portability!");
         }
