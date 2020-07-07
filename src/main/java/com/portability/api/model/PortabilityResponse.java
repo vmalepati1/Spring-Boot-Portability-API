@@ -12,8 +12,8 @@ public class PortabilityResponse {
     private boolean isPortable;
 
     public PortabilityResponse(String telephoneNumber,
-                                String serviceProviderName,
-                                boolean isPortable) {
+                               String serviceProviderName,
+                               boolean isPortable) {
         this.telephoneNumber = telephoneNumber;
         this.serviceProviderName = serviceProviderName;
         this.isPortable = isPortable;

@@ -92,7 +92,7 @@ public class InteliquentService implements PortabilityChecker {
 
         try {
             response = restTemplate.postForEntity(REQUEST_URL, request, InteliquentPortabilityResponse.class);
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new APIRequestException();
         }
 

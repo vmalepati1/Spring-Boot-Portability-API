@@ -32,7 +32,7 @@ public class BandwidthService implements PortabilityChecker {
 
         try {
             response = LnpChecker.checkLnp(client, request, "true");
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new APIRequestException();
         }
 
