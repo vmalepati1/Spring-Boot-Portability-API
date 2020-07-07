@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PortabilityResponse {
 
+    @JsonProperty("telephoneNumber")
     private String telephoneNumber;
+    @JsonProperty("serviceProviderName")
     private String serviceProviderName;
+    @JsonProperty("isPortable")
     private boolean isPortable;
 
-    public PortabilityResponse(@JsonProperty("telephoneNumber") String telephoneNumber,
-                               @JsonProperty("serviceProviderName") String serviceProviderName,
-                               @JsonProperty("isPortable") boolean isPortable) {
+    public PortabilityResponse(String telephoneNumber,
+                                String serviceProviderName,
+                                boolean isPortable) {
         this.telephoneNumber = telephoneNumber;
         this.serviceProviderName = serviceProviderName;
         this.isPortable = isPortable;

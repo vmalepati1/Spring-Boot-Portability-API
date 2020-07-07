@@ -4,6 +4,7 @@ import com.bandwidth.iris.sdk.IrisClient;
 import com.bandwidth.iris.sdk.model.LnpChecker;
 import com.bandwidth.iris.sdk.model.NumberPortabilityRequest;
 import com.bandwidth.iris.sdk.model.NumberPortabilityResponse;
+import com.portability.api.exceptions.APIRequestException;
 import com.portability.api.model.PortabilityResponse;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,14 @@ public class BandwidthService implements PortabilityChecker {
         NumberPortabilityRequest request = new NumberPortabilityRequest();
 
         request.getTnList().add(tn);
-        NumberPortabilityResponse response = LnpChecker.checkLnp(client, request, "true");
+
+        NumberPortabilityResponse response;
+
+        try {
+            response = LnpChecker.checkLnp(client, request, "true");
+        } catch(Exception e) {
+            throw new APIRequestException();
+        }
 
         if (response.getPortableNumbers().size() >= 1) {
             result.setPortable(true);

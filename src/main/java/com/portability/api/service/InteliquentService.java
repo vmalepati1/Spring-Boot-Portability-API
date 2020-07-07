@@ -1,5 +1,6 @@
 package com.portability.api.service;
 
+import com.portability.api.exceptions.APIRequestException;
 import com.portability.api.model.InteliquentAuthResponse;
 import com.portability.api.model.InteliquentPortabilityResponse;
 import com.portability.api.model.PortabilityResponse;
@@ -17,6 +18,8 @@ import java.util.Map;
 @Service
 public class InteliquentService implements PortabilityChecker {
 
+    private static final String REQUEST_URL = "https://services.inteliquent.com/Services/1.0.0/portInAvailability";
+
     private static final String PRIVATE_KEY = "YOURPRIVATEKEY";
     private static final String CLIENT_ID = "YOURCONSUMERKEY";
     private static final String CLIENT_SECRET = "YOURCONSUMERSECRET";
@@ -29,7 +32,7 @@ public class InteliquentService implements PortabilityChecker {
     public InteliquentService() {
         restTemplate = new RestTemplate();
 
-        authenticate();
+        // authenticate();
     }
 
     private void authenticate() {
@@ -68,8 +71,6 @@ public class InteliquentService implements PortabilityChecker {
     public PortabilityResponse checkNumber(String tn) throws Exception {
         PortabilityResponse result = new PortabilityResponse(tn, "", false);
 
-        String url = "https://services.inteliquent.com/Services/1.0.0/portInAvailability";
-
         // create headers
         HttpHeaders headers = new HttpHeaders();
         // set `content-type` header
@@ -86,7 +87,14 @@ public class InteliquentService implements PortabilityChecker {
         // build the request
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(map, headers);
         // send POST request
-        ResponseEntity<InteliquentPortabilityResponse> response = restTemplate.postForEntity(url, request, InteliquentPortabilityResponse.class);
+
+        ResponseEntity<InteliquentPortabilityResponse> response;
+
+        try {
+            response = restTemplate.postForEntity(REQUEST_URL, request, InteliquentPortabilityResponse.class);
+        } catch(Exception e) {
+            throw new APIRequestException();
+        }
 
         // check response status code
         if (response.getStatusCode() == HttpStatus.OK) {
